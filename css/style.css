@@ -57,7 +57,7 @@ body[data-theme="silver-aerogel"] {
     --text-color: #202020;
     --prompt-color: #202020;
     --command-color: #202020;
-    --link-color: #404040;
+    --link-color: #000000;
     --nav-bg: #a0a0a0;
 }
 
@@ -144,6 +144,10 @@ body[data-theme="silver-aerogel"] .help-trigger {
     color: #000000;
 }
 
+body[data-theme="silver-aerogel"] .authors {
+    color: #000000;
+}
+
 
 .nav-brand {
     font-weight: bold;
@@ -215,7 +219,7 @@ main {
 
 .line {
     margin-bottom: 15px;
-    margin-top: 10px;
+    margin-top: 25px;
     /* Add spacing between lines */
     display: flex;
     flex-wrap: wrap;
@@ -398,7 +402,7 @@ button:focus,
     /* Float for text wrapping */
     float: left;
     margin-right: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
 }
 
 /* Floating Social Badge */
@@ -989,8 +993,9 @@ body[data-theme="silver-aerogel"] .timeline-item:hover .timeline-dot {
     .profile-pic {
         width: 100px;
         height: 100px;
-        float: none;
-        margin: 0 auto 15px;
+        float: left;
+        margin-right: 15px;
+        margin-bottom: 2px;
         display: block;
     }
 
