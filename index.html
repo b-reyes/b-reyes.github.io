@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[User@Website ~]</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Personal website of a Research Engineer & Developer. Explore my projects, papers, and technical expertise in machine learning and software development.">
+    <meta name="keywords"
+        content="research engineer, developer, machine learning, software development, terminal website">
+    <meta name="author" content="Your Name">
+
+    <!-- Inline script to set theme immediately (prevents flash) -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('terminal-theme') || 'homebrew';
+            const themes = {
+                'homebrew': { bg: '#0a0a0a', text: '#33ff33', prompt: '#33ff33', command: '#00ff00', link: '#33ff33', nav: '#1a1a1a' },
+                'red-sands': { bg: '#7a251e', text: '#f7f7f7', prompt: '#f7f7f7', command: '#f7f7f7', link: '#f7f7f7', nav: '#5e1c17' },
+                'silver-aerogel': { bg: '#bfbfbf', text: '#202020', prompt: '#101010', command: '#404040', link: '#404040', nav: '#a0a0a0' },
+                'midnight-ocean': { bg: '#0d1117', text: '#c9d1d9', prompt: '#58a6ff', command: '#79c0ff', link: '#58a6ff', nav: '#161b22' }
+            };
+            const theme = themes[savedTheme] || themes['homebrew'];
+            const style = document.createElement('style');
+            style.textContent = `
+                body {
+                    --bg-color: ${theme.bg};
+                    --text-color: ${theme.text};
+                    --prompt-color: ${theme.prompt};
+                    --command-color: ${theme.command};
+                    --link-color: ${theme.link};
+                    --nav-bg: ${theme.nav};
+                }
+            `;
+            document.head.appendChild(style);
+            // Also set the data-theme attribute for later use
+            document.addEventListener('DOMContentLoaded', function () {
+                document.body.setAttribute('data-theme', savedTheme);
+            });
+        })();
+    </script>
+
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="User@Website | Research Engineer & Developer">
+    <meta property="og:description"
+        content="Personal website showcasing projects, research papers, and technical skills.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://yourwebsite.com/assets/profile.svg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="User@Website | Research Engineer & Developer">
+    <meta name="twitter:description"
+        content="Personal website showcasing projects, research papers, and technical skills.">
+    <meta name="twitter:image" content="https://yourwebsite.com/assets/profile.svg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-brand">[<span class="dynamic-user"></span> ~]$</div>
+        <ul class="nav-links">
+            <li><a href="index.html">/home</a></li>
+            <li><a href="projects.html">/projects</a></li>
+            <li><a href="papers.html">/papers</a></li>
+            <li>
+                <span id="help-trigger" class="help-trigger" role="button" tabindex="0"
+                    aria-label="Show keyboard shortcuts">[?]</span>
+            </li>
+            <li class="theme-menu-container">
+                <span id="theme-trigger" class="theme-trigger" role="button" tabindex="0" aria-haspopup="true"
+                    aria-expanded="false" aria-label="Toggle theme menu">[Theme]</span>
+                <div id="theme-dropdown" class="theme-dropdown" role="menu" aria-label="Theme selection">
+                    <span class="theme-option" data-theme="homebrew" role="menuitem" tabindex="-1">Homebrew</span>
+                    <span class="theme-option" data-theme="ocean" role="menuitem" tabindex="-1">Ocean</span>
+                    <span class="theme-option" data-theme="red-sands" role="menuitem" tabindex="-1">Red Sands</span>
+                    <span class="theme-option" data-theme="silver-aerogel" role="menuitem" tabindex="-1">Silver
+                        Aerogel</span>
+                    <span class="theme-option" data-theme="basic" role="menuitem" tabindex="-1">Basic</span>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="line">
+            <span class="prompt">[<span class="dynamic-user"></span> ~]$</span> <span
+                class="command">./welcome.sh</span>
+        </div>
+
+        <h1>Hello, World!</h1>
+
+        <div class="profile-container">
+            <img src="assets/profile.svg" alt="Profile Picture" class="profile-pic">
+        </div>
+
+        <p>Welcome to my personal website. Use the navigation above to explore my work.</p>
+
+        <div class="line">
+            <span class="prompt">[<span class="dynamic-user"></span> ~]$</span> <span
+                class="command">./display-stats.sh</span>
+        </div>
+
+        <div class="system-status">
+            <p><strong>> USER_NAME:</strong> User Name</p>
+            <p><strong>> CURRENT_ROLE:</strong> Research Engineer & Developer</p>
+            <p><strong>> CURRENT_STATUS:</strong> <span class="status-ok">ONLINE</span></p>
+            <p><strong>> UPTIME:</strong> 5 Years, 3 Months</p>
+        </div>
+
+        <h2>## Skills</h2>
+        <div class="skill-bars">
+            <div class="skill-row">
+                <span class="skill-name">Python</span>
+                <div class="progress-bar">
+                    <div class="fill" style="width: 0%" data-width="98%"></div>
+                </div>
+            </div>
+            <div class="skill-row">
+                <span class="skill-name">JavaScript</span>
+                <div class="progress-bar">
+                    <div class="fill" style="width: 0%" data-width="90%"></div>
+                </div>
+            </div>
+            <div class="skill-row">
+                <span class="skill-name">Machine Learning</span>
+                <div class="progress-bar">
+                    <div class="fill" style="width: 0%" data-width="85%"></div>
+                </div>
+            </div>
+            <div class="skill-row">
+                <span class="skill-name">System Design</span>
+                <div class="progress-bar">
+                    <div class="fill" style="width: 0%" data-width="80%"></div>
+                </div>
+            </div>
+        </div>
+
+        <h2>## Experience</h2>
+
+        <!-- Tech Corp - Multiple positions -->
+        <div class="log-entry">
+            <span class="process">[2022-Present] @ Tech Corp</span>
+            <div class="log-details">
+                <div class="position-timeline">
+                    <div class="position-entry current">
+                        <span class="position-marker"></span>
+                        <span class="process">'Principal_Research_Engineer' [2023-Present]</span>
+                        <div style="margin-top: 5px;">
+                            <span class="status-running">>> STATUS: RUNNING</span><br>
+                            > Leading R&D initiatives for Project Z.<br>
+                            > Mentoring team of 5 engineers.
+                        </div>
+                    </div>
+                    <div class="position-entry">
+                        <span class="position-marker"></span>
+                        <span class="process">'Senior_Research_Engineer' [2022-2023]</span>
+                        <div style="margin-top: 5px;">
+                            <span class="status-terminated">>> STATUS: COMPLETED</span><br>
+                            > Led development of Project X.<br>
+                            > Published 3 papers on [Topic].
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="log-entry">
+            <span class="process">[2020-2022] Process 'Software_Engineer' @ Startup Inc</span>
+            <div class="log-details">
+                <span class="status-terminated">>> STATUS: COMPLETED</span><br>
+                > Built core infrastructure for [Product Y].<br>
+                > Optimized database queries (Load -40%).
+            </div>
+        </div>
+
+        <div class="log-entry">
+            <span class="process">[2019-2020] Process 'Junior_Developer' @ Web Agency</span>
+            <div class="log-details">
+                <span class="status-terminated">>> STATUS: COMPLETED</span><br>
+                > Developed client-facing web applications.<br>
+                > Improved deployment pipeline efficiency by 30%.
+            </div>
+        </div>
+
+        <div class="log-entry">
+            <span class="process">[2018-2019] Process 'Research_Intern' @ University Lab</span>
+            <div class="log-details">
+                <span class="status-terminated">>> STATUS: COMPLETED</span><br>
+                > Assisted in machine learning research.<br>
+                > Co-authored 1 paper on neural networks.
+            </div>
+        </div>
+
+        <h2>## Education</h2>
+        <div class="log-entry">
+            <span class="process">[2023] Module 'Ph.D. Computer Science' installed.</span><br>
+            <span class="location">@ University Name</span>
+        </div>
+
+        <div class="log-entry">
+            <span class="process">[2020] Module 'M.S. Computer Science' installed.</span><br>
+            <span class="location">@ University Name</span>
+        </div>
+
+        <div class="log-entry">
+            <span class="process">[2018] Module 'B.S. Computer Science' installed.</span><br>
+            <span class="location">@ University Name</span>
+        </div>
+
+        <div class="section-spacing"></div>
+        <div class="line">
+            <span class="prompt">[<span class="dynamic-user"></span> ~]$</span> <span class="cursor">_</span>
+        </div>
+    </main>
+
+    <!-- Floating Social Badge -->
+    <aside class="social-badge" id="social-badge" role="complementary" aria-label="Social media links">
+        <div class="social-header" id="social-toggle" role="button" tabindex="0" aria-label="Toggle social links"
+            aria-expanded="false">
+            <span class="social-title">[social]</span>
+            <span class="social-expand">+</span>
+        </div>
+        <div class="social-content">
+            <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank" rel="noopener noreferrer" class="social-link"
+                aria-label="Connect on LinkedIn">
+                $ connect --linkedin
+            </a>
+            <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener noreferrer" class="social-link"
+                aria-label="Connect on GitHub">
+                $ connect --github
+            </a>
+            <a href="mailto:YOUR_EMAIL" class="social-link" aria-label="Send email">
+                $ connect --email
+            </a>
+        </div>
+    </aside>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

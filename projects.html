@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[User@Website projects]</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Portfolio of research and development projects including neural network visualization, distributed systems, and web applications.">
+    <meta name="keywords" content="projects, research engineer, developer, neural networks, distributed systems">
+    <meta name="author" content="Your Name">
+
+    <!-- Inline script to set theme immediately (prevents flash) -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('terminal-theme') || 'homebrew';
+            const themes = {
+                'homebrew': { bg: '#0a0a0a', text: '#33ff33', prompt: '#33ff33', command: '#00ff00', link: '#33ff33', nav: '#1a1a1a' },
+                'red-sands': { bg: '#7a251e', text: '#f7f7f7', prompt: '#f7f7f7', command: '#f7f7f7', link: '#f7f7f7', nav: '#5e1c17' },
+                'silver-aerogel': { bg: '#bfbfbf', text: '#202020', prompt: '#101010', command: '#404040', link: '#404040', nav: '#a0a0a0' },
+                'midnight-ocean': { bg: '#0d1117', text: '#c9d1d9', prompt: '#58a6ff', command: '#79c0ff', link: '#58a6ff', nav: '#161b22' }
+            };
+            const theme = themes[savedTheme] || themes['homebrew'];
+            const style = document.createElement('style');
+            style.textContent = `
+                body {
+                    --bg-color: ${theme.bg};
+                    --text-color: ${theme.text};
+                    --prompt-color: ${theme.prompt};
+                    --command-color: ${theme.command};
+                    --link-color: ${theme.link};
+                    --nav-bg: ${theme.nav};
+                }
+            `;
+            document.head.appendChild(style);
+            // Also set the data-theme attribute for later use
+            document.addEventListener('DOMContentLoaded', function () {
+                document.body.setAttribute('data-theme', savedTheme);
+            });
+        })();
+    </script>
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="page-projects">
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-brand">[<span class="dynamic-user"></span> projects]$</div>
+        <ul class="nav-links">
+            <li><a href="index.html">/home</a></li>
+            <li><a href="projects.html">/projects</a></li>
+            <li><a href="papers.html">/papers</a></li>
+            <li>
+                <span id="help-trigger" class="help-trigger" role="button" tabindex="0"
+                    aria-label="Show keyboard shortcuts">[?]</span>
+            </li>
+            <li class="theme-menu-container">
+                <span id="theme-trigger" class="theme-trigger" role="button" tabindex="0" aria-haspopup="true"
+                    aria-expanded="false" aria-label="Toggle theme menu">[Theme]</span>
+                <div id="theme-dropdown" class="theme-dropdown" role="menu" aria-label="Theme selection">
+                    <span class="theme-option" data-theme="homebrew" role="menuitem" tabindex="-1">Homebrew</span>
+                    <span class="theme-option" data-theme="ocean" role="menuitem" tabindex="-1">Ocean</span>
+                    <span class="theme-option" data-theme="red-sands" role="menuitem" tabindex="-1">Red Sands</span>
+                    <span class="theme-option" data-theme="silver-aerogel" role="menuitem" tabindex="-1">Silver
+                        Aerogel</span>
+                    <span class="theme-option" data-theme="basic" role="menuitem" tabindex="-1">Basic</span>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="line">
+            <span class="prompt">[<span class="dynamic-user"></span> projects]$</span> <span class="command">ls -lt
+            </span>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-track"></div>
+            <div class="timeline-progress"></div>
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <div class="timeline-date">Oct 2023</div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="card-item">
+                    <h3>> neural-net-viz</h3>
+                    <div class="preview-window">
+                        <p>A web-based visualization tool for neural network architectures. It allows users to
+                            interactively design and inspect layers, weights, and activations in real-time.</p>
+                    </div>
+                    <p class="tech-stack">[TypeScript, D3.js, TensorFlow.js]</p>
+                    <div class="card-links">
+                        <a href="#">[ GitHub ]</a> <a href="#">[ Demo ]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <div class="timeline-date">Aug 2023</div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="card-item">
+                    <h3>> autonomous-drone-swarm</h3>
+                    <div class="preview-window">
+                        <p>
+                            Simulation of decentralized swarm behavior for autonomous drones. The system uses local
+                            communication protocols to achieve flocking, obstacle avoidance, and target tracking without
+                            a central controller.
+                            Simulation of decentralized swarm behavior for autonomous drones. The system uses local
+                            communication protocols to achieve flocking, obstacle avoidance, and target tracking without
+                            a central controller.
+                            Simulation of decentralized swarm behavior for autonomous drones. The system uses local
+                            communication protocols to achieve flocking, obstacle avoidance, and target tracking without
+                            a central controller.
+                            Simulation of decentralized swarm behavior for autonomous drones. The system uses local
+                            communication protocols to achieve flocking, obstacle avoidance, and target tracking without
+                            a central controller.
+                        </p>
+                    </div>
+                    <p class="tech-stack">[Python, PyBullet, ROS]</p>
+                    <div class="card-links">
+                        <a href="#">[ GitHub ]</a> <a href="#">[ Video ]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <div class="timeline-date">May 2023</div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="card-item">
+                    <h3>> distributed-kv-store</h3>
+                    <div class="preview-window">
+                        <p>A high-performance distributed key-value store implemented in Go. Features include Raft
+                            consensus for consistency, sharding for scalability, and gRPC for efficient node-to-node
+                            communication.</p>
+                    </div>
+                    <p class="tech-stack">[Go, gRPC, Raft]</p>
+                    <div class="card-links">
+                        <a href="#">[ GitHub ]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <div class="timeline-date">Feb 2023</div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="card-item">
+                    <h3>> real-time-raytracer</h3>
+                    <div class="preview-window">
+                        <p>Hardware-accelerated ray tracer supporting global illumination. Implements path tracing with
+                            importance sampling and denoising filters to achieve photorealistic rendering at interactive
+                            frame rates.</p>
+                    </div>
+                    <p class="tech-stack">[C++, Vulkan, GLSL]</p>
+                    <div class="card-links">
+                        <a href="#">[ GitHub ]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <div class="timeline-date">Nov 2022</div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="card-item">
+                    <h3>> personal-terminal-site</h3>
+                    <div class="preview-window">
+                        <p>This website! A terminal-themed portfolio designed to mimic a Linux command-line interface.
+                            Built with vanilla web technologies to ensure fast load times and broad compatibility.</p>
+                    </div>
+                    <p class="tech-stack">[HTML, CSS, Vanilla JS]</p>
+                    <div class="card-links">
+                        <a href="#">[ GitHub ]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <div class="timeline-date">Sep 2022</div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="card-item">
+                    <h3>> blockchain-voting-system</h3>
+                    <div class="preview-window">
+                        <p>Secure and transparent electronic voting system on Ethereum. Smart contracts ensure vote
+                            integrity and anonymity, while a React frontend provides an accessible voter interface.</p>
+                    </div>
+                    <p class="tech-stack">[Solidity, Web3.js, React]</p>
+                    <div class="card-links">
+                        <a href="#">[ GitHub ]</a> <a href="#">[ Whitepaper ]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <div class="timeline-date">Jun 2022</div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="card-item">
+                    <h3>> compiler-design-llvm</h3>
+                    <div class="preview-window">
+                        <p>A toy language compiler targeting LLVM IR. Supports basic control flow, functions, and
+                            arithmetic operations, demonstrating the phases of lexical analysis, parsing, and code
+                            generation.</p>
+                    </div>
+                    <p class="tech-stack">[C++, LLVM, Bison/Flex]</p>
+                    <div class="card-links">
+                        <a href="#">[ GitHub ]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <div class="timeline-date">Mar 2022</div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="card-item">
+                    <h3>> iot-home-automation</h3>
+                    <div class="preview-window">
+                        <p>Smart home system with MQTT messaging and mobile control. Connects various sensors and
+                            actuators to a central hub, allowing for remote monitoring and automation rules.</p>
+                    </div>
+                    <p class="tech-stack">[C++, ESP32, MQTT, Flutter]</p>
+                    <div class="card-links">
+                        <a href="#">[ GitHub ]</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="line">
+            <span class="prompt">[<span class="dynamic-user"></span> projects]$</span> <span class="cursor">_</span>
+        </div>
+    </main>
+
+    <!-- Floating Social Badge -->
+    <aside class="social-badge" id="social-badge" role="complementary" aria-label="Social media links">
+        <div class="social-header" id="social-toggle" role="button" tabindex="0" aria-label="Toggle social links"
+            aria-expanded="false">
+            <span class="social-title">[social]</span>
+            <span class="social-expand">+</span>
+        </div>
+        <div class="social-content">
+            <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank" rel="noopener noreferrer" class="social-link"
+                aria-label="Connect on LinkedIn">
+                $ connect --linkedin
+            </a>
+            <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener noreferrer" class="social-link"
+                aria-label="Connect on GitHub">
+                $ connect --github
+            </a>
+            <a href="mailto:YOUR_EMAIL" class="social-link" aria-label="Send email">
+                $ connect --email
+            </a>
+        </div>
+    </aside>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
