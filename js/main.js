@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Configuration
     const CONFIG = {
-        userString: 'yo@website',
+        userString: 'breyes@website',
         startDate: new Date('2018-12-01') // Customize this to your actual start date
     };
 
