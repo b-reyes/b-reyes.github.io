@@ -1376,3 +1376,246 @@ body[data-theme="silver-aerogel"] .scroll-to-top {
     font-family: 'Verdana', 'Arial', sans-serif;
     font-weight: bold;
 }
+
+/* =========================================
+   Bento Grid Layout (Projects Page)
+   ========================================= */
+
+.page-projects .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 250px;
+    /* Increased height to ensure text visibility */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px 0 0 0;
+    /* Added top margin for spacing from prompt */
+    padding-bottom: 20px;
+}
+
+/* Card Base Styles */
+.page-projects .bento-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--nav-bg);
+    border-radius: 12px;
+    padding: 20px;
+    /* Slightly reduced padding */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    container-type: inline-size;
+    /* Enable container queries */
+}
+
+.page-projects .bento-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--command-color);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Card Header */
+.page-projects .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    /* Reduced margin */
+}
+
+.page-projects .bento-card h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    /* Slightly smaller font */
+    color: var(--command-color);
+    font-weight: 600;
+}
+
+/* Card Content */
+.page-projects .card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    /* Critical for nested scrolling in flex */
+}
+
+.page-projects .bento-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+    /* Enable scrolling */
+    padding-right: 5px;
+    /* Space for scrollbar */
+    min-height: 60px;
+    /* Ensure at least some text is always visible */
+
+    /* Scrollbar Styling */
+    scrollbar-width: thin;
+    scrollbar-color: var(--command-color) transparent;
+}
+
+.page-projects .bento-card p::-webkit-scrollbar {
+    width: 4px;
+}
+
+.page-projects .bento-card p::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.page-projects .bento-card p::-webkit-scrollbar-thumb {
+    background-color: var(--command-color);
+    border-radius: 4px;
+}
+
+/* Tech Tags */
+.page-projects .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+    /* Prevent tags from shrinking */
+}
+
+.page-projects .tech-tags span {
+    font-size: 0.7rem;
+    /* Smaller base size */
+    padding: 3px 8px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-family: var(--font-family);
+}
+
+/* Responsive tags using Container Queries */
+@container (max-width: 350px) {
+    .page-projects .tech-tags span {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+        gap: 4px;
+    }
+}
+
+/* Card Footer / Links */
+.page-projects .card-footer {
+    display: flex;
+    gap: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+    margin-top: auto;
+}
+
+.page-projects .btn-link {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.page-projects .btn-link:hover {
+    color: var(--command-color);
+    text-decoration: underline;
+}
+
+/* Grid Sizes */
+.page-projects .card-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.page-projects .card-medium {
+    grid-column: span 2;
+}
+
+.page-projects .card-small {
+    grid-column: span 1;
+}
+
+.page-projects .card-wide {
+    grid-column: span 4;
+}
+
+/* Theme Specific Overrides */
+body[data-theme="silver-aerogel"] .page-projects .bento-card {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="silver-aerogel"] .page-projects .bento-card p {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+body[data-theme="silver-aerogel"] .page-projects .tech-tags span {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #333;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Ocean Theme Overrides */
+body[data-theme="ocean"] .page-projects .bento-card {
+    border-color: rgba(255, 255, 255, 0.5);
+    /* Increased opacity for better visibility */
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Red Sands Theme Overrides */
+body[data-theme="red-sands"] .page-projects .bento-card {
+    border-color: rgba(255, 255, 255, 0.5);
+    /* Increased opacity for better visibility */
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .page-projects .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .page-projects .card-large {
+        grid-column: span 2;
+        grid-row: span 1;
+        /* Reset row span on tablet */
+    }
+
+    .page-projects .card-medium {
+        grid-column: span 1;
+    }
+
+    .page-projects .card-small {
+        grid-column: span 1;
+    }
+
+    .page-projects .card-wide {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .page-projects .bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-projects .card-large,
+    .page-projects .card-medium,
+    .page-projects .card-small,
+    .page-projects .card-wide {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .page-projects .bento-card {
+        min-height: auto;
+        /* Let content dictate height on mobile */
+    }
+}
