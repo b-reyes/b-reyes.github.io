@@ -26,7 +26,7 @@
             const theme = themes[savedTheme] || themes['homebrew'];
             const style = document.createElement('style');
             style.textContent = `
-                body {
+                html {
                     --bg-color: ${theme.bg};
                     --text-color: ${theme.text};
                     --prompt-color: ${theme.prompt};
@@ -38,7 +38,7 @@
             document.head.appendChild(style);
             // Also set the data-theme attribute for later use
             document.addEventListener('DOMContentLoaded', function () {
-                document.body.setAttribute('data-theme', savedTheme);
+                document.documentElement.setAttribute('data-theme', savedTheme);
             });
         })();
     </script>
@@ -100,7 +100,7 @@
         
         <p>Do you hate the site's default color theme? Try out some of the other themes using the [Theme] button!</p>
 
-        <div class="line">
+        <div class="line2">
             <span class="prompt">[<span class="dynamic-user"></span> ~]$</span> <span
                 class="command">./display-stats.sh</span>
         </div>

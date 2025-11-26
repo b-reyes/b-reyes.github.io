@@ -25,7 +25,7 @@
             const theme = themes[savedTheme] || themes['homebrew'];
             const style = document.createElement('style');
             style.textContent = `
-                body {
+                html {
                     --bg-color: ${theme.bg};
                     --text-color: ${theme.text};
                     --prompt-color: ${theme.prompt};
@@ -37,7 +37,7 @@
             document.head.appendChild(style);
             // Also set the data-theme attribute for later use
             document.addEventListener('DOMContentLoaded', function () {
-                document.body.setAttribute('data-theme', savedTheme);
+                document.documentElement.setAttribute('data-theme', savedTheme);
             });
         })();
     </script>

@@ -117,11 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentThemeIndex = 0;
 
     if (savedTheme) {
-        body.setAttribute('data-theme', savedTheme);
+        document.documentElement.setAttribute('data-theme', savedTheme);
         currentThemeIndex = themes.indexOf(savedTheme);
         if (currentThemeIndex === -1) currentThemeIndex = 0;
     } else {
-        body.setAttribute('data-theme', 'homebrew');
+        document.documentElement.setAttribute('data-theme', 'homebrew');
     }
 
     // Theme Dropdown Logic
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             option.addEventListener('click', (e) => {
                 e.preventDefault();
                 const newTheme = option.getAttribute('data-theme');
-                body.setAttribute('data-theme', newTheme);
+                document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('terminal-theme', newTheme);
                 themeDropdown.classList.remove('visible');
             });
@@ -440,18 +440,21 @@ document.addEventListener('DOMContentLoaded', () => {
     body.insertAdjacentHTML('beforeend', scrollTopHTML);
 
     const scrollTopBtn = document.getElementById('scroll-to-top');
+    const mainElement = document.querySelector('main');
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            scrollTopBtn.classList.add('visible');
-        } else {
-            scrollTopBtn.classList.remove('visible');
-        }
-    });
+    if (mainElement) {
+        mainElement.addEventListener('scroll', () => {
+            if (mainElement.scrollTop > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
 
-    scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+        scrollTopBtn.addEventListener('click', () => {
+            mainElement.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // ==================== FADE IN ELEMENTS ON SCROLL ====================
     const fadeElements = document.querySelectorAll('.log-entry');
@@ -464,7 +467,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     entry.target.classList.remove('fade-in-element');
                 }
             });
-        }, { threshold: 0.1 });
+        }, {
+            threshold: 0.1,
+            root: mainElement // Use main as the scrolling container root
+        });
 
         fadeElements.forEach(el => {
             fadeObserver.observe(el);
@@ -495,7 +501,8 @@ document.addEventListener('DOMContentLoaded', () => {
             progressPx = Math.max(0, Math.min(progressPx, containerRect.height));
 
             // Force full progress if at the bottom of the page
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+            // Use mainElement.scrollTop and mainElement.scrollHeight
+            if ((mainElement.clientHeight + mainElement.scrollTop) >= mainElement.scrollHeight - 50) {
                 progressPx = containerRect.height;
             }
 
@@ -524,14 +531,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update on scroll with requestAnimationFrame for performance
         let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    updateTimelineActiveState();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
+        if (mainElement) {
+            mainElement.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateTimelineActiveState();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        }
     }
 });

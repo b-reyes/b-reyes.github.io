@@ -12,7 +12,7 @@
     --font-family: 'Fira Code', monospace;
 }
 
-body[data-theme="basic"] {
+html[data-theme="basic"] {
     --bg-color: #1e1e1e;
     --text-color: #f0f0f0;
     --prompt-color: #a6e22e;
@@ -21,7 +21,7 @@ body[data-theme="basic"] {
     --nav-bg: #2d2d2d;
 }
 
-body[data-theme="homebrew"] {
+html[data-theme="homebrew"] {
     --bg-color: #000000;
     --text-color: #00ff00;
     --prompt-color: #00ff00;
@@ -30,7 +30,7 @@ body[data-theme="homebrew"] {
     --nav-bg: #1a1a1a;
 }
 
-body[data-theme="ocean"] {
+html[data-theme="ocean"] {
     --bg-color: #224fbc;
     --text-color: #ffffff;
     --prompt-color: #ffffff;
@@ -39,7 +39,7 @@ body[data-theme="ocean"] {
     --nav-bg: #1a3c8e;
 }
 
-body[data-theme="red-sands"] {
+html[data-theme="red-sands"] {
     --bg-color: #7a251e;
     --text-color: #f7f7f7;
     --prompt-color: #f7f7f7;
@@ -48,16 +48,16 @@ body[data-theme="red-sands"] {
     --nav-bg: #5e1c17;
 }
 
-body[data-theme="red-sands"] .status-terminated {
+html[data-theme="red-sands"] .status-terminated {
     color: #00ff88;
 }
 
-body[data-theme="silver-aerogel"] {
+html[data-theme="silver-aerogel"] {
     --bg-color: #bfbfbf;
     --text-color: #202020;
     --prompt-color: #202020;
     --command-color: #202020;
-    --link-color: #000000;
+    --link-color: #404040;
     --nav-bg: #a0a0a0;
 }
 
@@ -84,6 +84,20 @@ html {
     }
 }
 
+/* Global Scrollbar Styling */
+/* Global Scrollbar Styling moved to main */
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    /* Disable global scroll */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* Hide body scrollbar just in case */
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -94,11 +108,35 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-family);
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     transition: background-color 0.3s, color 0.3s;
-    padding-bottom: 50px;
+}
+
+main {
+    margin-top: 45px;
+    /* Approximate nav height */
+    height: calc(100vh - 45px);
+    overflow-y: auto;
+    padding: 0px 40px 100px 40px;
+    /* Reduced top padding since margin-top handles nav offset */
+
+    /* Scrollbar Styling for main */
+    scrollbar-width: thin;
+    scrollbar-color: var(--command-color) transparent;
+}
+
+main::-webkit-scrollbar {
+    width: 6px;
+}
+
+main::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+main::-webkit-scrollbar-thumb {
+    background-color: var(--command-color);
+    border-radius: 4px;
 }
 
 /* Navigation */
@@ -123,28 +161,24 @@ body {
 }
 
 /* Silver Aerogel theme specific overrides for better readability */
-body[data-theme="silver-aerogel"] .main-nav {
+html[data-theme="silver-aerogel"] .main-nav {
     background-color: rgba(160, 160, 160, 0.95);
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-body[data-theme="silver-aerogel"] .nav-brand {
+html[data-theme="silver-aerogel"] .nav-brand {
     color: #000000;
 }
 
-body[data-theme="silver-aerogel"] .nav-links a {
+html[data-theme="silver-aerogel"] .nav-links a {
     color: #000000;
 }
 
-body[data-theme="silver-aerogel"] .theme-trigger {
+html[data-theme="silver-aerogel"] .theme-trigger {
     color: #000000;
 }
 
-body[data-theme="silver-aerogel"] .help-trigger {
-    color: #000000;
-}
-
-body[data-theme="silver-aerogel"] .authors {
+html[data-theme="silver-aerogel"] .help-trigger {
     color: #000000;
 }
 
@@ -181,45 +215,39 @@ body[data-theme="silver-aerogel"] .authors {
 }
 
 /* Theme-specific overrides for .status-ok */
-body[data-theme="homebrew"] .status-ok {
+html[data-theme="homebrew"] .status-ok {
     color: #00ffff;
     /* Cyan for better contrast against green text */
 }
 
-body[data-theme="silver-aerogel"] .status-ok {
+html[data-theme="silver-aerogel"] .status-ok {
     color: #1a8c1a;
     /* Darker green for better contrast on light background */
     font-weight: 800;
 }
 
-body[data-theme="silver-aerogel"] .status-running {
+html[data-theme="silver-aerogel"] .status-running {
     color: #b45309;
     /* Dark orange/brown for visibility on light bg */
     font-weight: bold;
 }
 
-body[data-theme="silver-aerogel"] .status-terminated {
+html[data-theme="silver-aerogel"] .status-terminated {
     color: #b91c1c;
     /* Dark red for visibility on light bg */
     font-weight: bold;
 }
 
-body[data-theme="silver-aerogel"] .log-details {
+html[data-theme="silver-aerogel"] .log-details {
     color: rgba(0, 0, 0, 0.7);
     /* Dark text for log details on light bg */
 }
 
-/* Main Content */
-main {
-    flex: 1;
-    width: 100%;
-    padding: 85px 40px 40px 40px;
-    /* More padding for full width and fixed header */
-}
+/* Main Content rule removed (duplicate) */
 
 .line {
     margin-bottom: 15px;
-    margin-top: 25px;
+    margin-top: 50px;
     /* Add spacing between lines */
     display: flex;
     flex-wrap: wrap;
@@ -231,7 +259,7 @@ main {
 
 .line2 {
     margin-bottom: 15px;
-    margin-top: 100px;
+    margin-top: 30px;
     /* Add spacing between lines */
     display: flex;
     flex-wrap: wrap;
@@ -402,7 +430,7 @@ button:focus,
     /* Float for text wrapping */
     float: left;
     margin-right: 20px;
-    margin-bottom: 2px;
+    margin-bottom: 0;
 }
 
 /* Floating Social Badge */
@@ -425,7 +453,7 @@ button:focus,
 }
 
 /* Silver Aerogel theme specific override for better readability */
-body[data-theme="silver-aerogel"] .social-badge {
+html[data-theme="silver-aerogel"] .social-badge {
     background-color: rgba(160, 160, 160, 0.95);
 }
 
@@ -698,17 +726,20 @@ body[data-theme="silver-aerogel"] .social-badge {
 .card-item {
     border: 1px solid var(--nav-bg);
     padding: 20px;
-    border-radius: 4px;
-    transition: transform 0.2s, border-color 0.2s;
-    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.03);
     display: flex;
     flex-direction: column;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .card-item:hover {
     transform: translateY(-5px);
-    border-color: var(--link-color);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-color: var(--command-color);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .card-item h3 {
@@ -727,37 +758,50 @@ body[data-theme="silver-aerogel"] .social-badge {
 }
 
 .preview-window {
-    background-color: #000;
-    border: 1px solid var(--text-color);
+    /* Removed box styles to match bento text */
+    /* background-color: #000; */
+    /* border: 1px solid var(--text-color); */
     height: 150px;
-    margin-bottom: 15px;
-    padding: 10px;
-    font-size: 0.8rem;
+    margin-bottom: 25px;
+    /* Increased from 15px */
+    margin-top: 10px;
+    /* Added top margin */
+    /* padding: 10px; */
+    font-size: 0.9rem;
+    /* Increased size */
     overflow-y: auto;
-    font-family: 'Fira Code', monospace;
-    color: #ccc;
+    /* font-family: 'Fira Code', monospace; Removed to match bento */
+    color: rgba(255, 255, 255, 0.8);
+    /* Softer white */
     position: relative;
+
+    /* Scrollbar Styling */
+    scrollbar-width: thin;
+    scrollbar-color: var(--command-color) transparent;
 }
 
-.preview-window::before {
-    content: "PREVIEW";
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: var(--text-color);
-    color: var(--bg-color);
-    padding: 2px 5px;
-    font-size: 0.7rem;
-    font-weight: bold;
+.preview-window::-webkit-scrollbar {
+    width: 4px;
+}
+
+.preview-window::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.preview-window::-webkit-scrollbar-thumb {
+    background-color: var(--command-color);
+    border-radius: 4px;
 }
 
 .preview-window p,
 .preview-window pre {
-    padding: 25px 10px 10px 10px;
-    /* Extra top padding to clear PREVIEW badge */
-    font-size: 0.75rem;
-    line-height: 1.4;
+    padding: 0 5px 0 0;
+    /* Reduced padding, kept right padding for scrollbar */
+    font-size: 0.9rem;
+    line-height: 1.5;
     margin-bottom: 0;
+    font-family: var(--font-family);
+    /* Ensure it uses main font */
 }
 
 .preview-window pre {
@@ -853,7 +897,7 @@ body[data-theme="silver-aerogel"] .social-badge {
 }
 
 /* Theme overrides for timeline active state */
-body[data-theme="silver-aerogel"] .timeline-item.active .timeline-dot {
+html[data-theme="silver-aerogel"] .timeline-item.active .timeline-dot {
     background-color: #b45309;
 }
 
@@ -883,19 +927,19 @@ body[data-theme="silver-aerogel"] .timeline-item.active .timeline-dot {
 }
 
 /* Theme overrides for timeline */
-body[data-theme="silver-aerogel"] .timeline-container {
+html[data-theme="silver-aerogel"] .timeline-container {
     border-left-color: rgba(0, 0, 0, 0.2);
 }
 
-body[data-theme="silver-aerogel"] .timeline-dot {
+html[data-theme="silver-aerogel"] .timeline-dot {
     border-color: #b45309;
 }
 
-body[data-theme="silver-aerogel"] .timeline-date {
+html[data-theme="silver-aerogel"] .timeline-date {
     color: #b45309;
 }
 
-body[data-theme="silver-aerogel"] .timeline-item:hover .timeline-dot {
+html[data-theme="silver-aerogel"] .timeline-item:hover .timeline-dot {
     background-color: #b45309;
 }
 
@@ -948,7 +992,7 @@ body[data-theme="silver-aerogel"] .timeline-item:hover .timeline-dot {
 
     /* Reduce overall padding */
     main {
-        padding: 85px 15px 20px 15px;
+        padding: 60px 15px 100px 15px;
     }
 
     /* Smaller headings */
@@ -995,7 +1039,7 @@ body[data-theme="silver-aerogel"] .timeline-item:hover .timeline-dot {
         height: 100px;
         float: left;
         margin-right: 15px;
-        margin-bottom: 2px;
+        margin-bottom: 1px;
         display: block;
     }
 
@@ -1081,17 +1125,18 @@ body[data-theme="silver-aerogel"] .timeline-item:hover .timeline-dot {
     }
 
     /* Reduce line spacing */
+    /* Reduce line spacing */
     .line {
         font-size: 0.95rem;
         margin-bottom: 10px;
-        margin-top: 10px;
+        margin-top: 0;
     }
 
     /* Reduce line spacing */
     .line2 {
         font-size: 0.95rem;
         margin-bottom: 10px;
-        margin-top: 30px;
+        margin-top: 10px;
     }
 
     /* Smaller log entries */
@@ -1218,7 +1263,7 @@ body[data-theme="silver-aerogel"] .timeline-item:hover .timeline-dot {
 }
 
 /* Silver Aerogel theme specific override for better readability */
-body[data-theme="silver-aerogel"] .scroll-to-top {
+html[data-theme="silver-aerogel"] .scroll-to-top {
     background-color: rgba(160, 160, 160, 0.95);
 }
 
@@ -1388,9 +1433,9 @@ body[data-theme="silver-aerogel"] .scroll-to-top {
     /* Increased height to ensure text visibility */
     gap: 20px;
     max-width: 1200px;
-    margin: 40px 0 0 0;
+    margin: 20px 0 0 0;
     /* Added top margin for spacing from prompt */
-    padding-bottom: 20px;
+    padding-bottom: 0;
 }
 
 /* Card Base Styles */
@@ -1547,30 +1592,47 @@ body[data-theme="silver-aerogel"] .scroll-to-top {
 }
 
 /* Theme Specific Overrides */
-body[data-theme="silver-aerogel"] .page-projects .bento-card {
+html[data-theme="silver-aerogel"] .bento-card {
     background-color: rgba(0, 0, 0, 0.03);
     border-color: rgba(0, 0, 0, 0.1);
+    color: #000000 !important;
 }
 
-body[data-theme="silver-aerogel"] .page-projects .bento-card p {
-    color: rgba(0, 0, 0, 0.7);
+html[data-theme="silver-aerogel"] .bento-card p {
+    color: #000000 !important;
 }
 
-body[data-theme="silver-aerogel"] .page-projects .tech-tags span {
+html[data-theme="silver-aerogel"] .tech-tags span {
     background-color: rgba(0, 0, 0, 0.05);
-    color: #333;
+    color: #000000 !important;
     border-color: rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme="silver-aerogel"] .preview-window {
+    color: #000000 !important;
+}
+
+html[data-theme="silver-aerogel"] .authors {
+    color: #000000 !important;
+}
+
+html[data-theme="silver-aerogel"] .bento-card h3 {
+    color: #000000 !important;
+}
+
+html[data-theme="silver-aerogel"] .btn-link {
+    color: #000000 !important;
 }
 
 /* Ocean Theme Overrides */
-body[data-theme="ocean"] .page-projects .bento-card {
+html[data-theme="ocean"] .page-projects .bento-card {
     border-color: rgba(255, 255, 255, 0.5);
     /* Increased opacity for better visibility */
     background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Red Sands Theme Overrides */
-body[data-theme="red-sands"] .page-projects .bento-card {
+html[data-theme="red-sands"] .page-projects .bento-card {
     border-color: rgba(255, 255, 255, 0.5);
     /* Increased opacity for better visibility */
     background-color: rgba(255, 255, 255, 0.05);
