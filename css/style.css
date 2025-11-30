@@ -114,24 +114,28 @@ body {
 }
 
 main {
-    margin-top: 45px;
-    /* Approximate nav height */
-    height: calc(100vh - 45px);
-    overflow-y: auto;
+    position: fixed;
+    top: 56px;
+    /* Exact height of nav bar */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
     padding: 0px 40px 100px 40px;
-    /* Reduced top padding since margin-top handles nav offset */
+    z-index: 1;
+    /* Ensure it's below nav (z-index 100) but above background */
 
     /* Scrollbar Styling for main */
-    scrollbar-width: thin;
-    scrollbar-color: var(--command-color) transparent;
+    /* Removed standard scrollbar properties to force WebKit styles on macOS */
 }
 
 main::-webkit-scrollbar {
     width: 6px;
+    -webkit-appearance: none;
 }
 
 main::-webkit-scrollbar-track {
-    background: transparent;
+    background-color: rgba(128, 128, 128, 0.1);
 }
 
 main::-webkit-scrollbar-thumb {
@@ -243,8 +247,6 @@ html[data-theme="silver-aerogel"] .log-details {
     /* Dark text for log details on light bg */
 }
 
-/* Main Content rule removed (duplicate) */
-
 .line {
     margin-bottom: 15px;
     margin-top: 50px;
@@ -260,7 +262,7 @@ html[data-theme="silver-aerogel"] .log-details {
 .line2 {
     margin-bottom: 15px;
     margin-top: 30px;
-    /* Add spacing between lines */
+    /* Reduced spacing between lines */
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -430,7 +432,7 @@ button:focus,
     /* Float for text wrapping */
     float: left;
     margin-right: 20px;
-    margin-bottom: 0;
+    margin-bottom: 2px;
 }
 
 /* Floating Social Badge */
@@ -684,10 +686,6 @@ html[data-theme="silver-aerogel"] .social-badge {
     margin-bottom: 25px;
     border-left: 2px dashed var(--text-color);
     padding-left: 20px;
-    opacity: 0;
-    /* Hidden initially for animation */
-    transform: translateY(10px);
-    transition: opacity 0.5s, transform 0.5s;
     max-width: 900px;
 }
 
@@ -770,22 +768,21 @@ html[data-theme="silver-aerogel"] .social-badge {
     font-size: 0.9rem;
     /* Increased size */
     overflow-y: auto;
-    /* font-family: 'Fira Code', monospace; Removed to match bento */
     color: rgba(255, 255, 255, 0.8);
     /* Softer white */
     position: relative;
 
     /* Scrollbar Styling */
-    scrollbar-width: thin;
-    scrollbar-color: var(--command-color) transparent;
+    /* Removed standard scrollbar properties */
 }
 
 .preview-window::-webkit-scrollbar {
     width: 4px;
+    -webkit-appearance: none;
 }
 
 .preview-window::-webkit-scrollbar-track {
-    background: transparent;
+    background-color: rgba(128, 128, 128, 0.1);
 }
 
 .preview-window::-webkit-scrollbar-thumb {
@@ -992,7 +989,10 @@ html[data-theme="silver-aerogel"] .timeline-item:hover .timeline-dot {
 
     /* Reduce overall padding */
     main {
-        padding: 60px 15px 100px 15px;
+        top: 60px;
+        /* Adjusted to match actual mobile nav height */
+        padding: 20px 15px 100px 15px;
+        /* Reduced top padding */
     }
 
     /* Smaller headings */
@@ -1039,7 +1039,7 @@ html[data-theme="silver-aerogel"] .timeline-item:hover .timeline-dot {
         height: 100px;
         float: left;
         margin-right: 15px;
-        margin-bottom: 1px;
+        margin-bottom: 2px;
         display: block;
     }
 
@@ -1433,7 +1433,7 @@ html[data-theme="silver-aerogel"] .scroll-to-top {
     /* Increased height to ensure text visibility */
     gap: 20px;
     max-width: 1200px;
-    margin: 20px 0 0 0;
+    margin: 40px 0 0 0;
     /* Added top margin for spacing from prompt */
     padding-bottom: 0;
 }
@@ -1501,18 +1501,15 @@ html[data-theme="silver-aerogel"] .scroll-to-top {
     /* Space for scrollbar */
     min-height: 60px;
     /* Ensure at least some text is always visible */
-
-    /* Scrollbar Styling */
-    scrollbar-width: thin;
-    scrollbar-color: var(--command-color) transparent;
 }
 
 .page-projects .bento-card p::-webkit-scrollbar {
     width: 4px;
+    -webkit-appearance: none;
 }
 
 .page-projects .bento-card p::-webkit-scrollbar-track {
-    background: transparent;
+    background-color: rgba(128, 128, 128, 0.1);
 }
 
 .page-projects .bento-card p::-webkit-scrollbar-thumb {
@@ -1666,6 +1663,7 @@ html[data-theme="red-sands"] .page-projects .bento-card {
 @media (max-width: 600px) {
     .page-projects .bento-grid {
         grid-template-columns: 1fr;
+        padding-bottom: 40px;
     }
 
     .page-projects .card-large,

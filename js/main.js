@@ -382,23 +382,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    // ==================== LOG ENTRY ANIMATION ====================
-    const logEntries = document.querySelectorAll('.log-entry');
-    if (logEntries.length > 0) {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        logEntries.forEach(entry => {
-            observer.observe(entry);
-        });
-    }
-
     // ==================== TYPING EFFECT ON H1 ====================
     const h1Element = document.querySelector('h1');
     if (h1Element && !hasVisited) {
@@ -456,26 +439,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==================== FADE IN ELEMENTS ON SCROLL ====================
-    const fadeElements = document.querySelectorAll('.log-entry');
-    if (fadeElements.length > 0) {
-        const fadeObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-element');
-                } else {
-                    entry.target.classList.remove('fade-in-element');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            root: mainElement // Use main as the scrolling container root
-        });
-
-        fadeElements.forEach(el => {
-            fadeObserver.observe(el);
-        });
-    }
     // ==================== TIMELINE SCROLL TRIGGER ====================
     const timelineItems = document.querySelectorAll('.timeline-item');
     if (timelineItems.length > 0) {
